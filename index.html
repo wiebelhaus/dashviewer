@@ -4,61 +4,132 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DashViewer</title>
+<link rel="icon" type="image/svg+xml" href="icon.svg">
 <style>
   :root {
-    color-scheme: light dark;
+    --bg: #0a0a0c;
+    --bg-elev: #15151a;
+    --border: #27272f;
+    --text: #f2f2f4;
+    --text-dim: #9a9aa4;
+    --accent: #38bdf8;
+    --accent-soft: rgba(56, 189, 248, 0.12);
   }
+
+  * { box-sizing: border-box; }
+
   body {
+    background: var(--bg);
+    color: var(--text);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    max-width: 700px;
+    max-width: 720px;
     margin: 0 auto;
-    padding: 2.5rem 1.5rem 4rem;
-    line-height: 1.6;
-    color: #1c1c1e;
+    padding: 3rem 1.5rem 5rem;
+    line-height: 1.65;
+    font-size: 16px;
   }
+
   header {
-    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    margin-bottom: 2.75rem;
   }
+
+  header img {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    flex-shrink: 0;
+  }
+
   h1 {
-    font-size: 1.8rem;
-    margin-bottom: 0.25rem;
+    font-size: 1.9rem;
+    margin: 0 0 0.3rem;
+    letter-spacing: -0.01em;
   }
+
   .tagline {
-    color: #555;
-    font-size: 1.05rem;
-    margin-top: 0;
+    color: var(--text-dim);
+    font-size: 1.02rem;
+    margin: 0;
   }
+
+  section.card {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.9rem 2.1rem;
+    margin-bottom: 1.4rem;
+  }
+
   h2 {
-    font-size: 1.3rem;
-    margin-top: 2.5rem;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 0.4rem;
+    font-size: 1.25rem;
+    margin: 0 0 1rem;
+    color: var(--text);
   }
-  ul {
-    padding-left: 1.3rem;
+
+  h3 {
+    font-size: 1rem;
+    color: var(--accent);
+    margin: 1.6rem 0 0.5rem;
+    letter-spacing: 0.01em;
   }
-  footer {
-    margin-top: 3rem;
-    color: #777;
-    font-size: 0.9rem;
+
+  h3:first-of-type {
+    margin-top: 0.4rem;
   }
+
+  p { color: var(--text); margin: 0.6rem 0; }
+
+  p.dim, .updated {
+    color: var(--text-dim);
+    font-size: 0.88rem;
+  }
+
+  ul { padding-left: 1.2rem; margin: 0.6rem 0; }
+  li { margin-bottom: 0.55rem; color: var(--text); }
+  li strong { color: var(--text); }
+
   a {
-    color: #0a66c2;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s ease;
   }
-  .updated {
-    color: #777;
-    font-size: 0.9rem;
+  a:hover { border-bottom-color: var(--accent); }
+
+  .badge {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.4rem;
+  }
+
+  footer {
+    margin-top: 2.5rem;
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    text-align: center;
   }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>DashViewer</h1>
-  <p class="tagline">An Android companion app for VIOFO dashcams — view, download, and manage your footage over WiFi.</p>
+  <img src="icon.svg" alt="DashViewer icon">
+  <div>
+    <h1>DashViewer</h1>
+    <p class="tagline">An Android companion app for VIOFO dashcams — view, download, and manage your footage over WiFi.</p>
+  </div>
 </header>
 
-<section>
+<section class="card">
   <h2>About</h2>
   <p>
     DashViewer connects directly to your VIOFO dashcam over its local WiFi network, letting you
@@ -67,8 +138,9 @@
   </p>
 </section>
 
-<section>
-  <h2>Privacy Policy</h2>
+<section class="card">
+  <span class="badge">Privacy Policy</span>
+  <h2>How DashViewer handles your data</h2>
   <p class="updated">Last updated: June 21, 2026</p>
 
   <p>
