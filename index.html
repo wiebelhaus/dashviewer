@@ -31,28 +31,108 @@
 
   header {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 1.1rem;
+    text-align: center;
     margin-bottom: 2.75rem;
   }
 
-  header img {
-    width: 60px;
-    height: 60px;
-    border-radius: 14px;
-    flex-shrink: 0;
+  .icon-wrap {
+    position: relative;
+    width: 108px;
+    height: 108px;
+    border-radius: 24px;
+    margin-bottom: 1.4rem;
+    box-shadow:
+      0 12px 30px rgba(56, 189, 248, 0.22),
+      0 4px 10px rgba(0, 0, 0, 0.55);
+  }
+
+  .icon-wrap img {
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    display: block;
+  }
+
+  .icon-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0.12) 28%,
+      rgba(255, 255, 255, 0) 55%);
+    pointer-events: none;
   }
 
   h1 {
-    font-size: 1.9rem;
-    margin: 0 0 0.3rem;
+    font-size: 2rem;
+    margin: 0 0 0.5rem;
     letter-spacing: -0.01em;
   }
 
   .tagline {
     color: var(--text-dim);
     font-size: 1.02rem;
-    margin: 0;
+    margin: 0 0 1.6rem;
+    max-width: 480px;
+  }
+
+  .store-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .store-button {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.6rem 1.05rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--bg-elev);
+    text-decoration: none;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+
+  .store-button:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .store-button.disabled {
+    opacity: 0.55;
+    pointer-events: none;
+  }
+
+  .store-button svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  .store-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    text-align: left;
+  }
+
+  .store-text small {
+    font-size: 0.64rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .store-text span {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
   }
 
   section.card {
@@ -122,10 +202,43 @@
 <body>
 
 <header>
-  <img src="icon.svg" alt="DashViewer icon">
-  <div>
-    <h1>DashViewer</h1>
-    <p class="tagline">An Android companion app for VIOFO dashcams: view, download, and manage your footage over WiFi.</p>
+  <div class="icon-wrap">
+    <img src="icon.svg" alt="DashViewer icon">
+  </div>
+  <h1>DashViewer</h1>
+  <p class="tagline">An Android companion app for VIOFO dashcams: view, download, and manage your footage over WiFi.</p>
+
+  <div class="store-row">
+    <a class="store-button" href="https://play.google.com/store/apps/details?id=com.wiebelhaus.dashviewer">
+      <svg viewBox="0 0 24 24" fill="none">
+        <line x1="8" y1="3" x2="6.5" y2="6.2" stroke="#3DDC84" stroke-width="1.4" stroke-linecap="round"/>
+        <line x1="16" y1="3" x2="17.5" y2="6.2" stroke="#3DDC84" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M5 12a7 7 0 0 1 14 0v6a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z" fill="#3DDC84"/>
+        <circle cx="9" cy="11" r="1" fill="#0a0a0c"/>
+        <circle cx="15" cy="11" r="1" fill="#0a0a0c"/>
+        <rect x="2.6" y="10" width="2" height="7" rx="1" fill="#3DDC84"/>
+        <rect x="19.4" y="10" width="2" height="7" rx="1" fill="#3DDC84"/>
+        <rect x="8" y="20" width="2" height="3" rx="1" fill="#3DDC84"/>
+        <rect x="14" y="20" width="2" height="3" rx="1" fill="#3DDC84"/>
+      </svg>
+      <span class="store-text">
+        <small>Coming soon</small>
+        <span>Google Play</span>
+      </span>
+    </a>
+
+    <span class="store-button disabled">
+      <svg viewBox="0 0 24 24" fill="none">
+        <ellipse cx="9.5" cy="14" rx="5" ry="6" fill="#9a9aa4"/>
+        <ellipse cx="14.5" cy="14" rx="5" ry="6" fill="#9a9aa4"/>
+        <rect x="11.3" y="3" width="1.4" height="4" rx="0.7" fill="#9a9aa4"/>
+        <ellipse cx="14.7" cy="4.3" rx="2" ry="1.05" fill="#9a9aa4" transform="rotate(-25 14.7 4.3)"/>
+      </svg>
+      <span class="store-text">
+        <small>iOS</small>
+        <span>Not available</span>
+      </span>
+    </span>
   </div>
 </header>
 
